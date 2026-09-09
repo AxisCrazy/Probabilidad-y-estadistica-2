@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Estadística: Intervalos de Confianza</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for mathematical formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .math-block { overflow-x: auto; padding: 1rem 0; }
+        .gradient-text {
+            background-color: #2563eb;
+            background-image: linear-gradient(45deg, #2563eb, #7c3aed);
+            background-size: 100%;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            -moz-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <div class="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Portafolio de <span class="gradient-text">Estadística</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                Análisis de Intervalos de Confianza utilizando distribuciones Z y T de Student.
+            </p>
+            <div class="mt-6 flex justify-center gap-4 text-sm font-medium">
+                <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    df_limpio.csv (ltrm_fish_data)
+                </span>
+                <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-purple-700 ring-1 ring-inset ring-purple-700/10">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    Variable: weight
+                </span>
+            </div>
+        </header>
+
+        <!-- Dataset Preview -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-12">
+            <div class="px-6 py-5 border-b border-slate-200 bg-slate-50/50">
+                <h3 class="text-lg font-semibold leading-6 text-slate-900">Vista previa de los datos</h3>
+                <p class="mt-1 text-sm text-slate-500">Primeras 5 filas del dataset analizado.</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-slate-200 text-sm">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th scope="col" class="py-3.5 pl-6 pr-3 text-left font-semibold text-slate-900">fishcode</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900">length</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900">temp</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900">depth</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900">cond</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900">do</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900">secchi</th>
+                            <th scope="col" class="px-3 py-3.5 text-left font-semibold text-slate-900 bg-blue-50">weight (Objetivo)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-white">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 pl-6 pr-3 font-medium text-slate-900">LMBS</td>
+                            <td class="px-3 py-4 text-slate-500">174.0</td>
+                            <td class="px-3 py-4 text-slate-500">21.8</td>
+                            <td class="px-3 py-4 text-slate-500">0.8</td>
+                            <td class="px-3 py-4 text-slate-500">348.0</td>
+                            <td class="px-3 py-4 text-slate-500">8.6</td>
+                            <td class="px-3 py-4 text-slate-500">80.0</td>
+                            <td class="px-3 py-4 font-semibold text-blue-700 bg-blue-50/50">75.0</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 pl-6 pr-3 font-medium text-slate-900">LMBS</td>
+                            <td class="px-3 py-4 text-slate-500">124.0</td>
+                            <td class="px-3 py-4 text-slate-500">21.8</td>
+                            <td class="px-3 py-4 text-slate-500">0.8</td>
+                            <td class="px-3 py-4 text-slate-500">348.0</td>
+                            <td class="px-3 py-4 text-slate-500">8.6</td>
+                            <td class="px-3 py-4 text-slate-500">80.0</td>
+                            <td class="px-3 py-4 font-semibold text-blue-700 bg-blue-50/50">29.0</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 pl-6 pr-3 font-medium text-slate-900">BLGL</td>
+                            <td class="px-3 py-4 text-slate-500">149.0</td>
+                            <td class="px-3 py-4 text-slate-500">21.8</td>
+                            <td class="px-3 py-4 text-slate-500">0.8</td>
+                            <td class="px-3 py-4 text-slate-500">348.0</td>
+                            <td class="px-3 py-4 text-slate-500">8.6</td>
+                            <td class="px-3 py-4 text-slate-500">80.0</td>
+                            <td class="px-3 py-4 font-semibold text-blue-700 bg-blue-50/50">84.0</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 pl-6 pr-3 font-medium text-slate-900">BLGL</td>
+                            <td class="px-3 py-4 text-slate-500">165.0</td>
+                            <td class="px-3 py-4 text-slate-500">21.8</td>
+                            <td class="px-3 py-4 text-slate-500">0.8</td>
+                            <td class="px-3 py-4 text-slate-500">348.0</td>
+                            <td class="px-3 py-4 text-slate-500">8.6</td>
+                            <td class="px-3 py-4 text-slate-500">80.0</td>
+                            <td class="px-3 py-4 font-semibold text-blue-700 bg-blue-50/50">119.0</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 pl-6 pr-3 font-medium text-slate-900">BLGL</td>
+                            <td class="px-3 py-4 text-slate-500">151.0</td>
+                            <td class="px-3 py-4 text-slate-500">21.8</td>
+                            <td class="px-3 py-4 text-slate-500">0.8</td>
+                            <td class="px-3 py-4 text-slate-500">348.0</td>
+                            <td class="px-3 py-4 text-slate-500">8.6</td>
+                            <td class="px-3 py-4 text-slate-500">80.0</td>
+                            <td class="px-3 py-4 font-semibold text-blue-700 bg-blue-50/50">82.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Problema 1 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                Muestra mayor a 30 (Distribución Normal Z)
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Context & Formula -->
+                <div class="lg:col-span-1 bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 mb-3">Contexto del Problema</h4>
+                    <p class="text-sm text-blue-800 mb-4 leading-relaxed">
+                        Se extrajo una muestra grande de <strong>40 observaciones</strong> (\(n \ge 30\)). 
+                        Al ser una muestra grande, por el Teorema del Límite Central, utilizamos la distribución Normal y el estadístico \(Z\).
+                    </p>
+                    <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-blue-100 math-block text-sm">
+                        \[ IC = \bar{x} \pm Z_{\alpha/2} \left( \frac{s}{\sqrt{n}} \right) \]
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="lg:col-span-2 grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Tamaño de Muestra (n)</span>
+                        <span class="text-3xl font-bold text-slate-800">40</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Media Muestral (\(\bar{x}\))</span>
+                        <span class="text-3xl font-bold text-slate-800">730.21</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Valor \(Z\) (95% Confianza)</span>
+                        <span class="text-3xl font-bold text-blue-600">1.9600</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+                        <span class="text-sm font-medium text-blue-100 mb-1">Intervalo de Confianza (95%)</span>
+                        <span class="text-2xl font-bold break-words">(253.08, 1207.34)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
+                <span class="text-slate-500">// Interpretación:</span><br>
+                Tenemos un 95% de confianza en que el peso promedio poblacional de los peces se encuentra entre 253.08 y 1207.34 unidades, basándonos en esta muestra.
+            </div>
+        </section>
+
+        <!-- Problemas 2 y 3 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2/3</span>
+                Muestra menor a 30 (Distribución T de Student)
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Context & Formula -->
+                <div class="lg:col-span-1 bg-purple-50 rounded-2xl p-6 border border-purple-100">
+                    <h4 class="font-semibold text-purple-900 mb-3">Contexto del Problema</h4>
+                    <p class="text-sm text-purple-800 mb-4 leading-relaxed">
+                        Se extrajo una muestra pequeña de <strong>20 observaciones</strong> (\(n < 30\)) y <strong>se desconoce</strong> la desviación estándar poblacional (\(\sigma\)).
+                        Por lo tanto, utilizamos la distribución T de Student.
+                    </p>
+                    <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-purple-100 math-block text-sm">
+                        \[ IC = \bar{x} \pm t_{\alpha/2, n-1} \left( \frac{s}{\sqrt{n}} \right) \]
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Muestra (n)</span>
+                        <span class="text-2xl font-bold text-slate-800">20</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Grados Libertad</span>
+                        <span class="text-2xl font-bold text-slate-800">19</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center md:col-span-1 col-span-2">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Desviación (s)</span>
+                        <span class="text-2xl font-bold text-slate-800">1636.74</span>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center md:col-span-1 col-span-2">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Media (\(\bar{x}\))</span>
+                        <span class="text-2xl font-bold text-slate-800">726.85</span>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Valor \(t\) (95%)</span>
+                        <span class="text-2xl font-bold text-purple-600">2.0930</span>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center md:col-span-3 col-span-2 bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+                        <span class="text-sm font-medium text-purple-100 mb-1">Intervalo de Confianza (95%)</span>
+                        <span class="text-2xl font-bold break-words">(-39.17, 1492.87)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
+                <span class="text-slate-500">// Nota Estadística:</span><br>
+                El límite inferior negativo surge debido a la gran variabilidad (desviación estándar alta) de la muestra pequeña en relación con su media. Aunque el peso no puede ser físicamente negativo, este es el límite matemático exacto al 95% de confianza según la distribución T.
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-slate-200 text-center pb-8">
+            <p class="text-slate-500 text-sm">
+                Presentación generada a partir de los resultados de análisis de datos en Python (Jupyter Notebook / Google Colab).
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
