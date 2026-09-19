@@ -139,10 +139,75 @@
                     <p class="text-xs text-slate-500 mt-3">Haz clic sobre la imagen para verla en pantalla completa.</p>
                 </div>
             </div>
+
+            <!-- Gráfica Problema 1 -->
+            <div class="mt-8 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                <h4 class="font-semibold text-slate-800 mb-4">Gráfica de Distribución Z: Intervalo de Confianza (n=40)</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full max-w-4xl" onclick="openModal('grafica_z_n40.png')">
+                    <!-- Asegúrate de exportar/guardar tu gráfica del notebook con este nombre de archivo -->
+                    <img src="grafica_z_n40.png" alt="Gráfica Distribución Z n=40" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Gráfica Completa 🔍</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">Representación gráfica del intervalo al 95% generado en Python.</p>
+            </div>
             
             <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
                 <span class="text-slate-500">// Interpretación:</span><br>
                 Tenemos un 95% de confianza en que el peso promedio poblacional de los peces se encuentra entre 253.08 y 1207.34 unidades, basándonos en esta muestra.
+            </div>
+        </section>
+
+        <!-- Análisis Global (Añadido a partir del Notebook) -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">G</span>
+                Análisis Global (Población Total)
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Context -->
+                <div class="lg:col-span-1 bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                    <h4 class="font-semibold text-emerald-900 mb-3">Contexto del Problema</h4>
+                    <p class="text-sm text-emerald-800 mb-4 leading-relaxed">
+                        Al utilizar la totalidad de los datos limpios, contamos con una muestra <strong>muy grande (N=92,222)</strong>.
+                        Al aumentar drásticamente el tamaño de la muestra, el error estándar disminuye, lo que resulta en un intervalo de confianza mucho más estrecho y preciso.
+                    </p>
+                </div>
+
+                <!-- Results -->
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Muestra (N)</span>
+                        <span class="text-2xl font-bold text-slate-800">92,222</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Media Global</span>
+                        <span class="text-2xl font-bold text-slate-800">624.32</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Valor Z (95%)</span>
+                        <span class="text-2xl font-bold text-emerald-600">1.9600</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-emerald-500 to-emerald-600 text-white">
+                        <span class="text-sm font-medium text-emerald-100 mb-1">IC (95%)</span>
+                        <span class="text-xl font-bold break-words">(616.79, 631.85)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica Global -->
+            <div class="mt-8 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                <h4 class="font-semibold text-slate-800 mb-4">Gráfica de Distribución Z: Intervalo de Confianza (Todos los datos)</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full max-w-4xl" onclick="openModal('grafica_z_global.png')">
+                    <!-- Asegúrate de exportar/guardar tu gráfica del notebook con este nombre de archivo -->
+                    <img src="grafica_z_global.png" alt="Gráfica Distribución Z Global" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Gráfica Completa 🔍</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">Como se observa, el área de error es casi imperceptible en la escala global debido al tamaño de N.</p>
             </div>
         </section>
 
@@ -208,6 +273,18 @@
                     <p class="text-xs text-slate-500 mt-3">Haz clic para ampliarlas.</p>
                 </div>
             </div>
+
+            <!-- Gráfica Problema 2/3 -->
+            <div class="mt-8 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                <h4 class="font-semibold text-slate-800 mb-4">Gráfica de Distribución T de Student: Intervalo de Confianza (n=20)</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full max-w-4xl" onclick="openModal('grafica_t_n20.png')">
+                    <!-- Asegúrate de exportar/guardar tu gráfica del notebook con este nombre de archivo -->
+                    <img src="grafica_t_n20.png" alt="Gráfica Distribución T n=20" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Gráfica Completa 🔍</span>
+                    </div>
+                </div>
+            </div>
             
             <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
                 <span class="text-slate-500">// Nota Estadística:</span><br>
@@ -228,7 +305,7 @@
         <button class="absolute top-6 right-6 text-white hover:text-slate-300 p-2 focus:outline-none" aria-label="Cerrar modal">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <img id="modalImage" src="" alt="Vista ampliada de la tabla" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl object-contain bg-white p-2">
+        <img id="modalImage" src="" alt="Vista ampliada" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl object-contain bg-white p-2">
     </div>
 
     <!-- Scripts del Modal -->
