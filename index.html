@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Estadística: Intervalos de Confianza</title>
+    <title>Portafolio de Estadística: Intervalos de Confianza y Pruebas de Hipótesis</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -29,6 +29,7 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
     <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -64,7 +65,7 @@
                 Portafolio de <span class="gradient-text">Estadística</span>
             </h1>
             <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                Análisis de Intervalos de Confianza utilizando distribuciones Z y T de Student.
+                Análisis de Intervalos de Confianza y Pruebas de Hipótesis.
             </p>
             <div class="mt-6 flex justify-center gap-4 text-sm font-medium">
                 <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-blue-700 ring-1 ring-inset ring-blue-700/10">
@@ -139,7 +140,7 @@
             </div>
             
             <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
-                <span class="text-slate-500">// Interpretación:</span><br>
+                <span class="text-slate-500">Interpretación:</span><br>
                 Tenemos un 95% de confianza en que el peso promedio poblacional de los peces se encuentra entre 253.08 y 1207.34 unidades, basándonos en esta muestra.
             </div>
         </section>
@@ -259,7 +260,7 @@
             </div>
             
             <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
-                <span class="text-slate-500">// Nota Estadística:</span><br>
+                <span class="text-slate-500">Nota Estadística:</span><br>
                 El límite inferior negativo surge debido a la gran variabilidad (desviación estándar alta) de la muestra pequeña en relación con su media. Aunque el peso no puede ser físicamente negativo, este es el límite matemático exacto al 95% de confianza según la distribución T.
             </div>
         </section>
@@ -301,7 +302,7 @@
             </div>
             
             <div class="mt-4 p-4 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono overflow-x-auto">
-                <span class="text-slate-500">// Conclusión Analítica:</span><br>
+                <span class="text-slate-500">Conclusión Analítica:</span><br>
                 Para estimar intervalos de confianza mediante Z o T, <strong>no es estrictamente necesario</strong> normalizar (escalar) los datos a una distribución artificial. El Teorema del Límite Central garantiza la normalidad de la media muestral gracias a nuestro volumen inmenso de registros (\(N=92,222\)).
             </div>
         </section>
@@ -359,6 +360,60 @@
             </div>
         </section>
 
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-rose-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">H</span>
+                Prueba de Hipótesis para la Media
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-1 bg-rose-50 rounded-2xl p-6 border border-rose-100">
+                    <h4 class="font-semibold text-rose-900 mb-3">Contexto del Problema</h4>
+                    <p class="text-sm text-rose-800 mb-4 leading-relaxed">
+                        Un estudio de referencia afirma que el peso promedio poblacional de los peces es de <strong>600 gramos</strong>. Evaluaremos si nuestros datos respaldan esto con un nivel de significancia del <strong>5% (\(\alpha = 0.05\))</strong>.
+                    </p>
+                    <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-rose-100 math-block text-sm">
+                        \[ H_0: \mu = 600 \]
+                        \[ H_a: \mu \neq 600 \]
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Referencia (\(H_0\))</span>
+                        <span class="text-2xl font-bold text-slate-800">600 g</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Media Muestral</span>
+                        <span class="text-2xl font-bold text-slate-800">624.32 g</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">p-valor</span>
+                        <span class="text-xl font-bold text-rose-600">&lt; 0.0001</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-rose-500 to-rose-600 text-white">
+                        <span class="text-sm font-medium text-rose-100 mb-1">Decisión Final</span>
+                        <span class="text-lg font-bold break-words">Se Rechaza \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                <h4 class="font-semibold text-slate-800 mb-4">Gráfica de Zonas de Rechazo y Estadístico de Prueba</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full max-w-4xl" onclick="openModal('grafica_hipotesis.png')">
+                    <img src="grafica_hipotesis.png" alt="Gráfica Prueba de Hipótesis" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Gráfica Completa 🔍</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-rose-50 rounded-xl border border-rose-200 text-sm text-slate-800 overflow-x-auto leading-relaxed">
+                <strong class="text-rose-800">Interpretación Analítica:</strong><br><br>
+                El valor del estadístico de prueba cae profundamente dentro de la zona de rechazo. El valor p es minúsculo, mucho menor a nuestro umbral de tolerancia \(\alpha = 0.05\). Esto nos permite concluir categóricamente que <strong>el peso promedio de la población no es 600 gramos</strong>. Gracias a la robustez matemática del gran volumen de datos, podemos identificar que la diferencia de ~24 gramos entre nuestra muestra y la hipótesis de referencia es estadísticamente significativa y no es un producto del azar.
+            </div>
+        </section>
+
         <footer class="mt-16 pt-8 border-t border-slate-200 text-center pb-8">
             <p class="text-slate-500 text-sm">
                 Trabajo realizado por <strong>Josué Arturo Rosas González - Christian Omar Herera Valdez - Aldair Natanael Limon Galán</strong> - Portafolio de Estadística 2026. Todos los derechos reservados.
@@ -397,5 +452,3 @@
 
 </body>
 </html>
-
-```
