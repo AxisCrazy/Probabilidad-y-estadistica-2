@@ -414,6 +414,61 @@
             </div>
         </section>
 
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-cyan-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">H2</span>
+                Prueba de Hipótesis para la Varianza
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-1 bg-cyan-50 rounded-2xl p-6 border border-cyan-100">
+                    <h4 class="font-semibold text-cyan-900 mb-3">Contexto del Problema</h4>
+                    <p class="text-sm text-cyan-800 mb-4 leading-relaxed">
+                        Comprobaremos si la varianza actual difiere del valor histórico de <strong>1,400,000</strong> con un nivel de significancia del <strong>5% (\(\alpha = 0.05\))</strong> mediante una prueba bilateral.
+                    </p>
+                    <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-cyan-100 math-block text-sm">
+                        \[ H_0: \sigma^2 = 1400000 \]
+                        \[ H_a: \sigma^2 \neq 1400000 \]
+                        \[ \chi^2_p = \frac{(n-1)s^2}{\sigma_0^2} \]
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Referencia (\(H_0\))</span>
+                        <span class="text-xl font-bold text-slate-800">1,400,000</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Varianza Muestral (\(s^2\))</span>
+                        <span class="text-xl font-bold text-slate-800">1,360,604</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Estadístico \(\chi^2_p\)</span>
+                        <span class="text-xl font-bold text-cyan-600">89,625</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-cyan-500 to-cyan-600 text-white">
+                        <span class="text-sm font-medium text-cyan-100 mb-1">Decisión Final</span>
+                        <span class="text-lg font-bold break-words">Se Rechaza \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                <h4 class="font-semibold text-slate-800 mb-4">Gráfica de Zonas de Rechazo: Prueba de Varianza</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full max-w-4xl" onclick="openModal('grafica_hipotesis_varianza.png')">
+                    <img src="grafica_hipotesis_varianza.png" alt="Gráfica Prueba de Hipótesis Varianza" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Gráfica Completa 🔍</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-cyan-50 rounded-xl border border-cyan-200 text-sm text-slate-800 overflow-x-auto leading-relaxed">
+                <strong class="text-cyan-800">Interpretación Analítica:</strong><br><br>
+                Dado que nuestro estadístico \(\chi^2_p \approx 89,625\) es menor que el límite crítico inferior (91,381), cae fuertemente dentro de la región de rechazo izquierda. El valor p es prácticamente 0. Concluimos con contundencia que la varianza actual de la población es estadísticamente diferente (y menor) a la varianza histórica propuesta de 1,400,000.
+            </div>
+        </section>
+
         <footer class="mt-16 pt-8 border-t border-slate-200 text-center pb-8">
             <p class="text-slate-500 text-sm">
                 Trabajo realizado por <strong>Josué Arturo Rosas González - Christian Omar Herera Valdez - Aldair Natanael Limon Galán</strong> - Portafolio de Estadística 2026. Todos los derechos reservados.
