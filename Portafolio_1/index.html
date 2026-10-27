@@ -21,6 +21,7 @@
             background-color: #2563eb;
             background-image: linear-gradient(45deg, #2563eb, #7c3aed);
             background-size: 100%;
+            background-clip: text;
             -webkit-background-clip: text;
             -moz-background-clip: text;
             -webkit-text-fill-color: transparent; 
@@ -105,7 +106,7 @@
                         Al ser una muestra grande, por el Teorema del Límite Central, utilizamos la distribución Normal y el estadístico \(Z\).
                     </p>
                     <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-blue-100 math-block text-sm">
-                        \[ IC = ar{x} \pm Z_{lpha/2} \left( rac{s}{\sqrt{n}} ight) \]
+                        \[ IC = \bar{x} \pm Z_{\alpha/2} \left( \frac{s}{\sqrt{n}} \right) \]
                     </div>
                 </div>
 
@@ -115,7 +116,7 @@
                         <span class="text-3xl font-bold text-slate-800">40</span>
                     </div>
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
-                        <span class="text-sm font-medium text-slate-500 mb-1">Media Muestral (\(ar{x}\))</span>
+                        <span class="text-sm font-medium text-slate-500 mb-1">Media Muestral (\(\bar{x}\))</span>
                         <span class="text-3xl font-bold text-slate-800">730.21</span>
                     </div>
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
@@ -218,7 +219,7 @@
                         Por lo tanto, utilizamos la distribución T de Student.
                     </p>
                     <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-purple-100 math-block text-sm">
-                        \[ IC = ar{x} \pm t_{lpha/2, n-1} \left( rac{s}{\sqrt{n}} ight) \]
+                        \[ IC = \bar{x} \pm t_{\alpha/2, n-1} \left( \frac{s}{\sqrt{n}} \right) \]
                     </div>
                 </div>
 
@@ -228,7 +229,7 @@
                         <span class="text-2xl font-bold text-slate-800">20 <span class="text-sm text-slate-400 font-normal"> (df=19)</span></span>
                     </div>
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
-                        <span class="text-sm font-medium text-slate-500 mb-1">Media (\(ar{x}\))</span>
+                        <span class="text-sm font-medium text-slate-500 mb-1">Media (\(\bar{x}\))</span>
                         <span class="text-2xl font-bold text-slate-800">726.85</span>
                     </div>
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
@@ -332,7 +333,7 @@
                         Si queremos analizar la dispersión de los pesos (y no solo la media), utilizamos la distribución Chi-Cuadrada (\(\chi^2\)) para construir un intervalo de confianza sobre la varianza (\(\sigma^2\)).
                     </p>
                     <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-orange-100 math-block text-sm">
-                        \[ rac{(n-1)s^2}{\chi^2_{1-lpha/2}} \le \sigma^2 \le rac{(n-1)s^2}{\chi^2_{lpha/2}} \]
+                        \[ \frac{(n-1)s^2}{\chi^2_{1-\alpha/2}} \le \sigma^2 \le \frac{(n-1)s^2}{\chi^2_{\alpha/2}} \]
                     </div>
                 </div>
 
@@ -443,7 +444,7 @@ eq 600 \]
                         \[ H_0: \sigma^2 = 1400000 \]
                         \[ H_a: \sigma^2 
 eq 1400000 \]
-                        \[ \chi^2_p = rac{(n-1)s^2}{\sigma_0^2} \]
+                        \[ \chi^2_p = \frac{(n-1)s^2}{\sigma_0^2} \]
                     </div>
                 </div>
 
