@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Estadística 2: Prueba F (Transformación Log10)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .math-block { overflow-x: auto; padding: 1rem 0; }
+        .gradient-text {
+            background-color: #2563eb;
+            background-image: linear-gradient(45deg, #2563eb, #7c3aed);
+            background-size: 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            -moz-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+
+        <!-- Navegación -->
+        <div class="flex flex-wrap justify-center sm:justify-start gap-4 mb-8">
+            <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors shadow-sm">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Inicio
+            </a>
+            <a href="../Portafolio_1/index.html" class="inline-flex items-center px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-medium rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                Portafolio 1
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <!-- QR Página Web -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Página Web</h3>
+                <p class="text-sm text-slate-500 mb-4">Escanea para ver esta presentación</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://axiscrazy.github.io/Probabilidad-y-estadistica-2/Portafolio_2/index.html" alt="Código QR de la página web" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-2 hover:scale-105 transition-transform duration-300">
+            </div>
+            
+            <!-- QR Repositorio GitHub -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Repositorio GitHub</h3>
+                <p class="text-sm text-slate-500 mb-4">Escanea o haz clic para ver el Notebook</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/AxisCrazy/Probabilidad-y-estadistica-2/blob/main/Portafolio_2/portafolio_02.ipynb" alt="Código QR del Repositorio" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-4 hover:scale-105 transition-transform duration-300">
+                <a href="https://github.com/AxisCrazy/Probabilidad-y-estadistica-2/blob/main/Portafolio_2/portafolio_02.ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-slate-900 hover:bg-slate-800 transition-colors shadow-sm w-full">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    Ver Notebook
+                </a>
+            </div>
+
+            <!-- QR BD UMESC -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">BD UMESC</h3>
+                <p class="text-sm text-slate-500 mb-4">Fuente df_limpio.csv</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.umesc.usgs.gov/data_library/fisheries/fish1_query.html" alt="Código QR Base de Datos UMESC" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-4 hover:scale-105 transition-transform duration-300">
+                <a href="https://www.umesc.usgs.gov/data_library/fisheries/fish1_query.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm w-full">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                    Ir a UMESC
+                </a>
+            </div>
+
+            <!-- QR BD CONAPESCA -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">BD CONAPESCA</h3>
+                <p class="text-sm text-slate-500 mb-4">Fuente conapesca.csv</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.gob.mx/conapesca/documentos/anuario-estadistico-de-acuacultura-y-pesca" alt="Código QR Base de Datos CONAPESCA" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-4 hover:scale-105 transition-transform duration-300">
+                <a href="https://www.gob.mx/conapesca/documentos/anuario-estadistico-de-acuacultura-y-pesca" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-sm w-full">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                    Ir a CONAPESCA
+                </a>
+            </div>
+        </div>
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Portafolio <span class="gradient-text">02</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                Prueba F para la Comparación de Dos Varianzas (con Transformación Logarítmica)
+            </p>
+            <div class="mt-6 flex justify-center gap-4 text-sm font-medium flex-wrap">
+                <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    df_limpio.csv
+                </span>
+                <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-inset ring-emerald-700/10">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    conapesca_historico_2015_2025_LIMPIO.csv
+                </span>
+            </div>
+        </header>
+
+        <section class="mb-12 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <svg class="w-7 h-7 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Contexto del Problema y Justificación de la Hipótesis
+            </h2>
+            
+            <div class="prose max-w-none text-slate-700 space-y-4">
+                <p>
+                    Siguiendo la línea de investigación iniciada en el <strong>Portafolio 1</strong>, donde exploramos y limpiamos los datos del programa <strong>LTRM</strong> (alojados en el <a href="https://www.umesc.usgs.gov/data_library/fisheries/fish1_query.html" class="text-blue-600 hover:underline" target="_blank">UMESC</a>), en este segundo portafolio damos un paso más allá al comparar dicho dataset frente a los registros históricos nacionales de la <a href="https://www.gob.mx/conapesca/documentos/anuario-estadistico-de-acuacultura-y-pesca" class="text-emerald-600 hover:underline" target="_blank">CONAPESCA</a>. Nuestro objetivo central es determinar si la <em>variabilidad de los datos</em> (por ejemplo, en el peso o volumen registrado) difiere significativamente entre las poblaciones extraídas del dataset LTRM frente a las de CONAPESCA.
+                </p>
+                <p>
+                    <strong>El Problema de Escala:</strong> Al utilizar datasets con escalas de medición muy diferentes (pesos individuales vs. toneladas de pesca comercial), la varianza original se dispara y el estadístico F pierde proporción visual. Para solucionar esto, aplicamos una <strong>transformación logarítmica (log10)</strong> a ambas muestras. Esto comprime la escala, permite visualizar distribuciones más simétricas y hace que la comparación de varianzas tenga un sentido estadístico y visual correcto.
+                </p>
+                <p>
+                    <strong>Justificación de la Hipótesis:</strong> 
+                    Partimos de la <em>Hipótesis Nula (\(H_0\))</em> de que la dispersión (varianza logarítmica) de ambas bases de datos es estadísticamente la misma (\(\sigma_1^2 = \sigma_2^2\)). 
+                    Nuestra <em>Hipótesis Alternativa (\(H_1\))</em> plantea que existe una diferencia real en la varianza (\(\sigma_1^2 \neq \sigma_2^2\)). Se ha definido una prueba de dos colas con un nivel de significancia de \(\alpha = 0.05\) (5%). 
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">F</span>
+                Análisis y Resultados de la Prueba F (Escala Logarítmica)
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-1 bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 mb-3">Definición de Hipótesis</h4>
+                    <div class="bg-white rounded-xl p-4 shadow-sm text-center border border-blue-100 math-block text-sm mb-4">
+                        \[ H_0: \sigma_1^2 = \sigma_2^2 \]
+                        \[ H_1: \sigma_1^2 \neq \sigma_2^2 \]
+                        \[ \alpha = 0.05 \]
+                    </div>
+                    <p class="text-sm text-blue-800 leading-relaxed">
+                        Para calcular el estadístico \(F\), tomamos la razón entre la varianza mayor y la varianza menor.
+                        \[ F_p = \frac{s_{mayor}^2}{s_{menor}^2} \]
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Muestra Menor (Log10)</span>
+                        <span class="text-xl font-bold text-slate-800">Var = 0.8014</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Muestra Mayor (Log10)</span>
+                        <span class="text-xl font-bold text-slate-800">Var = 1.3999</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Estadístico \(F_p\)</span>
+                        <span class="text-2xl font-bold text-blue-600">1.7468</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+                        <span class="text-sm font-medium text-blue-100 mb-1">Decisión Final (p < 0.05)</span>
+                        <span class="text-xl font-bold break-words">Rechazar \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN NUEVA Y MEJORADA CON LAS 2 GRÁFICAS JUNTAS -->
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- 1. Gráfica de Histograma -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                    <h4 class="font-semibold text-slate-800 mb-4">Histogramas Log10: UMESC vs CONAPESCA</h4>
+                    <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_histogramas.png')">
+                        <img src="grafica_histogramas.png" alt="Histograma Comparativo Log10" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/600x400?text=Histogramas+Log10'">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Histogramas 🔍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Gráfica F -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                    <h4 class="font-semibold text-slate-800 mb-4">Gráfica: Distribución F y Región de Rechazo</h4>
+                    <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_distribucion_f.png')">
+                        <img src="grafica_distribucion_f.png" alt="Gráfica Distribución F" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/600x400?text=Grafica+Distribucion+F'">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ver Gráfica F Completa 🔍</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-8 flex flex-col justify-center">
+                <!-- Análisis de Errores -->
+                <div class="p-5 bg-red-50 rounded-xl border border-red-100 mb-4">
+                    <h4 class="font-bold text-red-900 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                        Interpretación de la Prueba
+                    </h4>
+                    <p class="text-sm text-red-800">
+                        Los valores críticos de la prueba establecen la región límite en \(F_{inf} = 0.9879\) y \(F_{sup} = 1.0123\). A pesar de haber estandarizado las escalas usando logaritmos, nuestro valor calculado \(F_p = 1.7468\) es estadísticamente superior al límite superior y se posiciona directamente en la región de rechazo de la cola derecha (\(p\)-value \(\approx 0\)).
+                        <br><br>
+                        <strong>Hay evidencia estadística suficiente para rechazar \(H_0\) y afirmar que la dispersión (varianza logarítmica) de la pesca comercial es estadísticamente diferente de la de los especímenes individuales.</strong>
+                    </p>
+                </div>
+
+                <div class="p-5 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700">
+                    <h4 class="font-bold text-slate-900 mb-3">Análisis del Posible Error (Error Tipo I)</h4>
+                    <ul class="space-y-2">
+                        <li><strong class="text-slate-800">Tipo de Error:</strong> Falso Positivo.</li>
+                        <li><strong class="text-slate-800">Significado Estadístico:</strong> Rechazar la hipótesis nula cuando en realidad es verdadera.</li>
+                        <li><strong class="text-slate-800">En contexto:</strong> Afirmar que las varianzas de ambas bases de datos difieren, cuando en realidad las fluctuaciones de ambas metodologías (población) fuesen estadísticamente similares.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">T</span>
+                Tablas de Referencia (Distribución F)
+            </h2>
+            
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <p class="text-sm text-slate-600 mb-6">A continuación se presentan las tablas de la distribución F con \(\alpha = 0.025\)) que se utilizan como referencia para este portafolio.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('Distribucion_F_1.png')">
+                            <!-- Sustituye la ruta por las imágenes que se generen o recorten del PDF -->
+                            <img src="Distribucion_F_1.png" alt="Tabla F Parte 1" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/600x400?text=Tabla+F+Parte+1'">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white text-sm font-bold px-3 py-1.5 bg-black/60 rounded-full">Ampliar Parte 1 🔍</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('Distribucion_F_2.png')">
+                            <!-- Sustituye la ruta por las imágenes que se generen o recorten del PDF -->
+                            <img src="Distribucion_F_2.png" alt="Tabla F Parte 2" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/600x400?text=Tabla+F+Parte+2'">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white text-sm font-bold px-3 py-1.5 bg-black/60 rounded-full">Ampliar Parte 2 🔍</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-center">
+                    <a href="F025-print-ES.pdf" target="_blank" class="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-700 border border-indigo-200 text-sm font-medium rounded-lg hover:bg-indigo-100 transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Ver PDF Completo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-16 pt-8 border-t border-slate-200 text-center pb-8">
+            <p class="text-slate-500 text-sm">
+                Trabajo realizado por <strong>Josué Arturo Rosas González - Christian Omar Herera Valdez - Aldair Natanael Limon Galán</strong> - Portafolio de Estadística 2026. Todos los derechos reservados.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal para las imágenes -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white hover:text-slate-300 p-2 focus:outline-none" aria-label="Cerrar modal">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="modalImage" src="" alt="Vista ampliada" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl object-contain bg-white p-2">
+    </div>
+
+    <script>
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
