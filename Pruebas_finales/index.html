@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Estadística: Pruebas Finales (LTRM)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .math-block { overflow-x: auto; padding: 0.75rem 0; }
+        .gradient-text {
+            background-color: #2563eb;
+            background-image: linear-gradient(45deg, #2563eb, #7c3aed);
+            background-size: 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            -moz-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+
+        <!-- Navegación -->
+        <div class="flex flex-wrap justify-center sm:justify-start gap-4 mb-8">
+            <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors shadow-sm">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Inicio
+            </a>
+            <a href="../Portafolio_1/index.html" class="inline-flex items-center px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-medium rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                Portafolio 1
+            </a>
+            <a href="../Portafolio_2/index.html" class="inline-flex items-center px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-medium rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                Portafolio 2
+            </a>
+        </div>
+
+        <!-- Tarjetas QR -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- QR Página Web -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Página Web</h3>
+                <p class="text-sm text-slate-500 mb-4">Escanea para ver esta presentación</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://axiscrazy.github.io/Probabilidad-y-estadistica-2/Pruebas_finales/index.html" alt="Código QR de la página web" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-2 hover:scale-105 transition-transform duration-300">
+            </div>
+            
+            <!-- QR Repositorio GitHub -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Repositorio GitHub</h3>
+                <p class="text-sm text-slate-500 mb-4">Escanea o haz clic para ver el Notebook</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/AxisCrazy/Probabilidad-y-estadistica-2/blob/main/Pruebas_finales/Pruebas_Finales_V2.ipynb" alt="Código QR del Repositorio" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-4 hover:scale-105 transition-transform duration-300">
+                <a href="https://github.com/AxisCrazy/Probabilidad-y-estadistica-2/blob/main/Pruebas_finales/Pruebas_Finales_V2.ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-slate-900 hover:bg-slate-800 transition-colors shadow-sm w-full">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    Ver Notebook
+                </a>
+            </div>
+
+            <!-- QR BD UMESC -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">BD UMESC (LTRM)</h3>
+                <p class="text-sm text-slate-500 mb-4">Fuente df_limpio.csv</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.umesc.usgs.gov/data_library/fisheries/fish1_query.html" alt="Código QR Base de Datos UMESC" class="w-32 h-32 rounded-lg border border-slate-200 p-2 mb-4 hover:scale-105 transition-transform duration-300">
+                <a href="https://www.umesc.usgs.gov/data_library/fisheries/fish1_query.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm w-full">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                    Ir a UMESC
+                </a>
+            </div>
+        </div>
+
+        <!-- Encabezado -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Pruebas <span class="gradient-text">Finales</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                Inferencia Paramétrica, Bondad de Ajuste (\(\chi^2\)), Prueba F, t de Welch, ANOVA y Modelos Predictivos Alométricos (LTRM)
+            </p>
+            <div class="mt-6 flex justify-center gap-3 text-sm font-medium flex-wrap">
+                <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                    df_limpio.csv
+                </span>
+                <span class="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+                    92,221 registros totales
+                </span>
+                <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-purple-700 ring-1 ring-inset ring-purple-700/10">
+                    100 especies distintas
+                </span>
+                <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-inset ring-emerald-700/10">
+                    Top 5 especies: 52,832 registros
+                </span>
+            </div>
+        </header>
+
+        <!-- Flujo de Análisis -->
+        <section class="mb-12 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                <svg class="w-7 h-7 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Flujo de Análisis
+            </h2>
+            <p class="text-slate-700 mb-4">
+                El análisis trabaja sobre <code>df_limpio.csv</code> (conjunto de datos limpio, sin valores nulos ni inconsistencias de captura, proveniente del programa <strong>LTRM</strong> del <a href="https://www.umesc.usgs.gov/data_library/fisheries/fish1_query.html" class="text-blue-600 hover:underline" target="_blank">UMESC</a>), con 92,221 registros válidos y 100 especies distintas:
+            </p>
+            <ol class="list-decimal list-inside space-y-2 text-slate-700 text-sm md:text-base">
+                <li>Validación de <strong>tamaño de muestra</strong> y <strong>normalidad</strong> (escala original vs. transformación \(\log_{10}\)).</li>
+                <li><strong>Prueba de Bondad de Ajuste (\(\chi^2\))</strong> sobre la distribución de frecuencias de las 5 especies principales (<code>fishcode</code>).</li>
+                <li><strong>Prueba F para dos varianzas</strong> entre las dos especies principales (BLGL vs. LMBS) para evaluar homocedasticidad.</li>
+                <li><strong>Prueba t de Welch</strong> para dos medias independientes con varianzas desiguales y tamaño del efecto (\(d\) de Cohen).</li>
+                <li><strong>ANOVA de un factor</strong> (con prueba de Levene, respaldo no paramétrico de Kruskal-Wallis, \(\eta^2\) y Tukey HSD) para las 5 especies principales.</li>
+                <li><strong>Modelos predictivos de peso y tamaño</strong> incorporando la especie y su relación alométrica (\(W = a \cdot L^b\)).</li>
+            </ol>
+        </section>
+
+        <!-- SECCIÓN 1: TAMAÑO DE MUESTRA -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                Verificación y Cálculo de Tamaño de Muestra
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+                <div class="lg:col-span-1 bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 mb-2">Fórmula de Suficiencia</h4>
+                    <div class="bg-white rounded-xl p-3 shadow-sm text-center border border-blue-100 math-block text-sm mb-3">
+                        \[ n = \left( \frac{Z_{\alpha/2} \cdot s}{E} \right)^2 \]
+                    </div>
+                    <p class="text-xs text-blue-800 leading-relaxed">
+                        Calculado con 95% de confianza (\(Z_{0.025} = 1.96\)) y un margen de error \(E = 0.05 \cdot s\) sobre \(\log_{10}(\text{weight})\), verificando además \(n_i \ge 30\) en cada categoría.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Tamaño Mínimo Teórico</span>
+                        <span class="text-2xl font-bold text-slate-800">1,537 registros</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Disponibles (Top 5)</span>
+                        <span class="text-2xl font-bold text-blue-600">52,832 registros</span>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-emerald-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-emerald-500 to-emerald-600 text-white">
+                        <span class="text-sm font-medium text-emerald-100 mb-1">Suficiencia Global y por Grupo</span>
+                        <span class="text-2xl font-bold">Cumple (\(n_i \gg 30\))</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm overflow-x-auto">
+                <h4 class="font-semibold text-slate-800 mb-4">Resumen Descriptivo de las 5 Especies Principales</h4>
+                <table class="min-w-full text-sm text-left text-slate-700">
+                    <thead class="text-xs uppercase bg-slate-100 text-slate-600">
+                        <tr>
+                            <th class="px-4 py-3 rounded-l-lg">Especie</th>
+                            <th class="px-4 py-3 text-right">n</th>
+                            <th class="px-4 py-3 text-right">Media Peso (g)</th>
+                            <th class="px-4 py-3 text-right">Std Peso (g)</th>
+                            <th class="px-4 py-3 text-right">Media Log10(Peso)</th>
+                            <th class="px-4 py-3 text-right">Var Log10(Peso)</th>
+                            <th class="px-4 py-3 text-right">Media Tamaño (mm)</th>
+                            <th class="px-4 py-3 text-center rounded-r-lg">\(n \ge 30\)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-4 py-3 font-bold text-slate-900">BLGL</td>
+                            <td class="px-4 py-3 text-right">18,848</td>
+                            <td class="px-4 py-3 text-right">50.7856</td>
+                            <td class="px-4 py-3 text-right">54.1350</td>
+                            <td class="px-4 py-3 text-right">1.4304</td>
+                            <td class="px-4 py-3 text-right">0.3169</td>
+                            <td class="px-4 py-3 text-right">118.4810</td>
+                            <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">Cumple</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-4 py-3 font-bold text-slate-900">LMBS</td>
+                            <td class="px-4 py-3 text-right">9,564</td>
+                            <td class="px-4 py-3 text-right">195.2803</td>
+                            <td class="px-4 py-3 text-right">345.1919</td>
+                            <td class="px-4 py-3 text-right">1.7188</td>
+                            <td class="px-4 py-3 text-right">0.4894</td>
+                            <td class="px-4 py-3 text-right">178.7607</td>
+                            <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">Cumple</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-4 py-3 font-bold text-slate-900">CNCF</td>
+                            <td class="px-4 py-3 text-right">8,760</td>
+                            <td class="px-4 py-3 text-right">536.8682</td>
+                            <td class="px-4 py-3 text-right">800.8155</td>
+                            <td class="px-4 py-3 text-right">2.2850</td>
+                            <td class="px-4 py-3 text-right">0.4561</td>
+                            <td class="px-4 py-3 text-right">324.5365</td>
+                            <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">Cumple</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-4 py-3 font-bold text-slate-900">GZSD</td>
+                            <td class="px-4 py-3 text-right">8,036</td>
+                            <td class="px-4 py-3 text-right">75.5887</td>
+                            <td class="px-4 py-3 text-right">117.3229</td>
+                            <td class="px-4 py-3 text-right">1.5401</td>
+                            <td class="px-4 py-3 text-right">0.2793</td>
+                            <td class="px-4 py-3 text-right">169.4017</td>
+                            <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">Cumple</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-4 py-3 font-bold text-slate-900">CARP</td>
+                            <td class="px-4 py-3 text-right">7,624</td>
+                            <td class="px-4 py-3 text-right">2,369.2721</td>
+                            <td class="px-4 py-3 text-right">1,609.3979</td>
+                            <td class="px-4 py-3 text-right">3.2188</td>
+                            <td class="px-4 py-3 text-right">0.2229</td>
+                            <td class="px-4 py-3 text-right">522.3642</td>
+                            <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">Cumple</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: NORMALIDAD -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                Pruebas de Normalidad (Escala Original vs. Transformación \(\log_{10}\))
+            </h2>
+
+            <!-- Validación: D'Agostino-Pearson -->
+            <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 mb-6">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div class="lg:w-2/3">
+                        <h4 class="font-bold text-amber-900 mb-2">Prueba de Validación: Omnibus \(K^2\) de D'Agostino-Pearson</h4>
+                        <p class="text-sm text-amber-900/90 mb-2">
+                            <strong>¿Por qué se usa?</strong> A diferencia de Shapiro-Wilk (que pierde estabilidad con \(n > 5,000\)), D'Agostino-Pearson está diseñada para muestras grandes como las de este dataset (\(n \approx 7,600 - 18,800\)).
+                        </p>
+                        <p class="text-sm text-amber-900/90">
+                            <strong>¿Para qué sirve?</strong> Evalúa conjuntamente si la asimetría (\(g_1\)) y la curtosis (\(g_2\)) se desvían de una distribución normal. Permite cuantificar la mejora al transformar los datos con \(\log_{10}(\text{weight})\).
+                        </p>
+                    </div>
+                    <div class="lg:w-1/3 bg-white rounded-xl p-4 border border-amber-200 text-center math-block text-sm">
+                        \[ K^2 = Z_1(g_1)^2 + Z_2(g_2)^2 \sim \chi^2_{2} \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mb-6">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm text-left text-slate-700">
+                        <thead class="text-xs uppercase bg-slate-100 text-slate-600">
+                            <tr>
+                                <th class="px-4 py-3 rounded-l-lg">Especie</th>
+                                <th class="px-4 py-3 text-right">n</th>
+                                <th class="px-4 py-3 text-right">Asimetría Orig.</th>
+                                <th class="px-4 py-3 text-right">\(K^2\) Orig.</th>
+                                <th class="px-4 py-3 text-right">Asimetría Log10</th>
+                                <th class="px-4 py-3 text-right">Curtosis Log10</th>
+                                <th class="px-4 py-3 text-right">\(K^2\) Log10</th>
+                                <th class="px-4 py-3 text-right rounded-r-lg">\(p\)-value Log10</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-bold text-slate-900">BLGL</td>
+                                <td class="px-4 py-3 text-right">18,848</td>
+                                <td class="px-4 py-3 text-right">1.926</td>
+                                <td class="px-4 py-3 text-right">7,352.15</td>
+                                <td class="px-4 py-3 text-right font-semibold text-emerald-700">-0.677</td>
+                                <td class="px-4 py-3 text-right">0.127</td>
+                                <td class="px-4 py-3 text-right">1,206.12</td>
+                                <td class="px-4 py-3 text-right">1.2401e-262</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-bold text-slate-900">LMBS</td>
+                                <td class="px-4 py-3 text-right">9,564</td>
+                                <td class="px-4 py-3 text-right">2.462</td>
+                                <td class="px-4 py-3 text-right">4,769.62</td>
+                                <td class="px-4 py-3 text-right font-semibold text-emerald-700">0.529</td>
+                                <td class="px-4 py-3 text-right">-0.772</td>
+                                <td class="px-4 py-3 text-right">1,104.94</td>
+                                <td class="px-4 py-3 text-right">1.1639e-240</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-bold text-slate-900">CNCF</td>
+                                <td class="px-4 py-3 text-right">8,760</td>
+                                <td class="px-4 py-3 text-right">2.716</td>
+                                <td class="px-4 py-3 text-right">5,122.33</td>
+                                <td class="px-4 py-3 text-right font-semibold text-emerald-700">-0.128</td>
+                                <td class="px-4 py-3 text-right">-0.456</td>
+                                <td class="px-4 py-3 text-right">154.08</td>
+                                <td class="px-4 py-3 text-right">3.4744e-34</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-bold text-slate-900">GZSD</td>
+                                <td class="px-4 py-3 text-right">8,036</td>
+                                <td class="px-4 py-3 text-right">3.227</td>
+                                <td class="px-4 py-3 text-right">5,525.70</td>
+                                <td class="px-4 py-3 text-right font-semibold text-emerald-700">0.311</td>
+                                <td class="px-4 py-3 text-right">-0.155</td>
+                                <td class="px-4 py-3 text-right">133.15</td>
+                                <td class="px-4 py-3 text-right">1.2216e-29</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-bold text-slate-900">CARP</td>
+                                <td class="px-4 py-3 text-right">7,624</td>
+                                <td class="px-4 py-3 text-right">1.192</td>
+                                <td class="px-4 py-3 text-right">1,850.44</td>
+                                <td class="px-4 py-3 text-right">-1.905</td>
+                                <td class="px-4 py-3 text-right">4.763</td>
+                                <td class="px-4 py-3 text-right">2,941.56</td>
+                                <td class="px-4 py-3 text-right">0.0000e+00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gráfica Normalidad -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+                <h4 class="font-semibold text-slate-800 mb-4">Comparativa Visual: Peso Original vs. Log10(Peso) y Gráfico Q-Q</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_01_normalidad.png')">
+                    <img src="grafica_01_normalidad.png" alt="Gráfica de Normalidad y Q-Q Plot" class="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/1200x350?text=grafica_01_normalidad.png'">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ampliar Gráfica 🔍</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CHI-CUADRADA -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                Prueba de Bondad de Ajuste (\(\chi^2\)): Distribución Uniforme de Especies
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+                <div class="lg:col-span-1 bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 mb-3">Definición de Hipótesis</h4>
+                    <div class="bg-white rounded-xl p-3 shadow-sm text-center border border-blue-100 math-block text-xs mb-3">
+                        \[ H_0: p_1 = \dots = p_5 = 0.20 \]
+                        \[ H_1: \exists\, p_i \neq 0.20 \]
+                        \[ \alpha = 0.05,\quad gl = 4 \]
+                    </div>
+                    <p class="text-xs text-blue-800 leading-relaxed">
+                        \[ \chi^2 = \sum_{i=1}^{k} \frac{(FO_i - FE_i)^2}{FE_i} \]
+                        Validación de supuesto: todas las \(FE_i = 10,566.4 \ge 5\).
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">\(\chi^2\) Calculado</span>
+                        <span class="text-2xl font-bold text-blue-600">8,320.0927</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Valor Crítico (\(gl=4\))</span>
+                        <span class="text-2xl font-bold text-slate-800">9.4877</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">\(p\)-value</span>
+                        <span class="text-2xl font-bold text-slate-800">\(\approx 0\)</span>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-blue-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+                        <span class="text-sm font-medium text-blue-100 mb-1">Decisión Final</span>
+                        <span class="text-xl font-bold">Rechazar \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla Chi2 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mb-6 overflow-x-auto">
+                <h4 class="font-semibold text-slate-800 mb-4">Tabla de Frecuencias Observadas vs. Esperadas (\(n = 52,832\))</h4>
+                <table class="min-w-full text-sm text-left text-slate-700">
+                    <thead class="text-xs uppercase bg-slate-100 text-slate-600">
+                        <tr>
+                            <th class="px-4 py-3 rounded-l-lg">Especie</th>
+                            <th class="px-4 py-3 text-right">FO (Observada)</th>
+                            <th class="px-4 py-3 text-right">\(p_i\)</th>
+                            <th class="px-4 py-3 text-right">FE (Esperada)</th>
+                            <th class="px-4 py-3 text-right rounded-r-lg">\((FO - FE)^2 / FE\)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">BLGL</td><td class="px-4 py-2 text-right">18,848</td><td class="px-4 py-2 text-right">0.20</td><td class="px-4 py-2 text-right">10,566.4</td><td class="px-4 py-2 text-right font-semibold text-blue-700">6,490.85</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">LMBS</td><td class="px-4 py-2 text-right">9,564</td><td class="px-4 py-2 text-right">0.20</td><td class="px-4 py-2 text-right">10,566.4</td><td class="px-4 py-2 text-right">95.09</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">CNCF</td><td class="px-4 py-2 text-right">8,760</td><td class="px-4 py-2 text-right">0.20</td><td class="px-4 py-2 text-right">10,566.4</td><td class="px-4 py-2 text-right">308.82</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">GZSD</td><td class="px-4 py-2 text-right">8,036</td><td class="px-4 py-2 text-right">0.20</td><td class="px-4 py-2 text-right">10,566.4</td><td class="px-4 py-2 text-right">605.97</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">CARP</td><td class="px-4 py-2 text-right">7,624</td><td class="px-4 py-2 text-right">0.20</td><td class="px-4 py-2 text-right">10,566.4</td><td class="px-4 py-2 text-right">819.36</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Gráfica Chi2 -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm mb-6">
+                <h4 class="font-semibold text-slate-800 mb-4 text-center">Gráficas: Frecuencias Observadas vs. Esperadas y Distribución \(\chi^2\)</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_02_chi2.png')">
+                    <img src="grafica_02_chi2.png" alt="Gráfica Chi-Cuadrada" class="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/1200x400?text=grafica_02_chi2.png'">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ampliar Gráfica 🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 bg-red-50 rounded-xl border border-red-100 text-sm text-red-800">
+                    <h4 class="font-bold text-red-900 mb-2">Interpretación de la Prueba</h4>
+                    Dado que \(\chi^2 = 8,320.0927 > 9.4877\) (\(p \approx 0\)), <strong>existe evidencia estadística suficiente para rechazar \(H_0\)</strong>: las 5 especies principales NO se capturan en igual proporción; existe una clara dominancia poblacional encabezada por <strong>BLGL</strong>.
+                </div>
+                <div class="p-5 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700">
+                    <h4 class="font-bold text-slate-900 mb-2">Posible Error (Error Tipo I)</h4>
+                    Concluir que la abundancia de las especies no es uniforme cuando en la población real del río sí lo fuera.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: PRUEBA F -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">4</span>
+                Prueba F para Dos Varianzas (Validación Previa: BLGL vs. LMBS)
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+                <div class="lg:col-span-1 bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 mb-3">Definición de Hipótesis</h4>
+                    <div class="bg-white rounded-xl p-3 shadow-sm text-center border border-blue-100 math-block text-xs mb-3">
+                        \[ H_0: \sigma_1^2 = \sigma_2^2 \]
+                        \[ H_1: \sigma_1^2 \neq \sigma_2^2 \]
+                        \[ \alpha = 0.05 \text{ (bilateral)} \]
+                    </div>
+                    <p class="text-xs text-blue-800 leading-relaxed">
+                        \[ F = \frac{s_1^2}{s_2^2},\quad gl_1 = 18,847,\quad gl_2 = 9,563 \]
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Var BLGL (\(s_1^2\))</span>
+                        <span class="text-xl font-bold text-slate-800">0.3169</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Var LMBS (\(s_2^2\))</span>
+                        <span class="text-xl font-bold text-slate-800">0.4894</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Estadístico \(F\)</span>
+                        <span class="text-2xl font-bold text-blue-600">0.6475</span>
+                        <span class="text-xs text-slate-400">Crít: [0.9659, 1.0355]</span>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-blue-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+                        <span class="text-sm font-medium text-blue-100 mb-1">Decisión (\(p = 9.9\times 10^{-138}\))</span>
+                        <span class="text-xl font-bold">Rechazar \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica F -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm mb-6">
+                <h4 class="font-semibold text-slate-800 mb-4 text-center">Gráfica: Distribución F Bilateral y Región de Rechazo (BLGL vs. LMBS)</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 max-w-4xl mx-auto" onclick="openModal('grafica_03_prueba_f.png')">
+                    <img src="grafica_03_prueba_f.png" alt="Gráfica Prueba F" class="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/1000x500?text=grafica_03_prueba_f.png'">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ampliar Gráfica 🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 bg-red-50 rounded-xl border border-red-100 text-sm text-red-800">
+                    <h4 class="font-bold text-red-900 mb-2">Interpretación y Rol de Validación</h4>
+                    El estadístico \(F = 0.6475\) cae por debajo del límite crítico inferior (\(F_{inf} = 0.9659\)). <strong>Las varianzas de peso logarítmico entre BLGL y LMBS son estadísticamente distintas</strong>, lo cual descarta la prueba t de Student clásica y justifica formalmente aplicar la <strong>prueba t de Welch</strong>.
+                </div>
+                <div class="p-5 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700">
+                    <h4 class="font-bold text-slate-900 mb-2">Posible Error (Error Tipo I)</h4>
+                    Concluir que las varianzas de peso entre BLGL y LMBS difieren cuando en realidad son iguales en la población.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PRUEBA T DE WELCH -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">5</span>
+                Prueba t de Welch para Dos Medias Independientes (BLGL vs. LMBS)
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+                <div class="lg:col-span-1 bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 mb-2">Hipótesis y Estadístico</h4>
+                    <div class="bg-white rounded-xl p-3 shadow-sm text-center border border-blue-100 math-block text-xs mb-3">
+                        \[ H_0: \mu_1 - \mu_2 = 0 \]
+                        \[ H_1: \mu_1 - \mu_2 \neq 0 \]
+                        \[ t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \]
+                    </div>
+                    <p class="text-xs text-blue-800">
+                        \(gl\) exacto = 16,002.81 \(\rightarrow\) conservador: <strong>16,002</strong>.<br>
+                        Media real: BLGL = <strong>50.79 g</strong> vs. LMBS = <strong>195.28 g</strong>.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Estadístico \(t\) Welch</span>
+                        <span class="text-2xl font-bold text-blue-600">-34.9804</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Valores Críticos</span>
+                        <span class="text-xl font-bold text-slate-800">\(\pm 1.9601\)</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">\(d\) de Cohen</span>
+                        <span class="text-2xl font-bold text-indigo-600">0.4543</span>
+                        <span class="text-xs text-slate-400">Efecto moderado</span>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-blue-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+                        <span class="text-sm font-medium text-blue-100 mb-1">Decisión (\(p \approx 0\))</span>
+                        <span class="text-xl font-bold">Rechazar \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Respaldo: d de Cohen -->
+            <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 mb-6">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div class="lg:w-2/3">
+                        <h4 class="font-bold text-amber-900 mb-2">Métrica de Respaldo: Tamaño del Efecto (\(d\) de Cohen)</h4>
+                        <p class="text-sm text-amber-900/90 mb-2">
+                            <strong>¿Por qué se usa?</strong> Con tamaños de muestra tan grandes (\(n_1 = 18,848,\; n_2 = 9,564\)), casi cualquier diferencia mínima produce \(p < 0.05\). La \(d\) de Cohen evita depender únicamente del \(p\)-value.
+                        </p>
+                        <p class="text-sm text-amber-900/90">
+                            <strong>¿Para qué sirve?</strong> Cuantifica la magnitud práctica de la diferencia entre ambas medias en unidades de desviación estándar (\(0.2\) pequeño, \(0.5\) moderado, \(0.8\) grande). El valor obtenido (\(d = 0.4543\)) confirma una diferencia real de magnitud moderada.
+                        </p>
+                    </div>
+                    <div class="lg:w-1/3 bg-white rounded-xl p-4 border border-amber-200 text-center math-block text-sm">
+                        \[ d = \frac{|\bar{x}_1 - \bar{x}_2|}{\sqrt{\frac{s_1^2 + s_2^2}{2}}} = 0.4543 \]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica Welch -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm mb-6">
+                <h4 class="font-semibold text-slate-800 mb-4 text-center">Gráficas: Boxplot de Log10(Peso) y Regiones Críticas t de Welch</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_04_t_welch.png')">
+                    <img src="grafica_04_t_welch.png" alt="Gráfica Prueba t de Welch" class="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/1200x400?text=grafica_04_t_welch.png'">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ampliar Gráfica 🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 bg-red-50 rounded-xl border border-red-100 text-sm text-red-800">
+                    <h4 class="font-bold text-red-900 mb-2">Interpretación de la Prueba</h4>
+                    Con \(t = -34.9804\) fuera del intervalo \([-1.9601, +1.9601]\), <strong>existe una diferencia estadísticamente significativa en el peso medio entre BLGL y LMBS</strong>, con una magnitud práctica moderada (\(d = 0.4543\)).
+                </div>
+                <div class="p-5 bg-slate-100 rounded-xl border border-slate-200 text-sm text-slate-700">
+                    <h4 class="font-bold text-slate-900 mb-2">Posible Error (Error Tipo I)</h4>
+                    Afirmar que el peso medio de BLGL y LMBS difiere cuando en realidad fuese igual en la población.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: ANOVA -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">6</span>
+                Análisis de Varianza (ANOVA de un Factor) — Top 5 Especies
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+                <div class="lg:col-span-1 bg-indigo-50 rounded-2xl p-6 border border-indigo-100">
+                    <h4 class="font-semibold text-indigo-900 mb-2">Hipótesis ANOVA</h4>
+                    <div class="bg-white rounded-xl p-3 shadow-sm text-center border border-indigo-100 math-block text-xs mb-3">
+                        \[ H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5 \]
+                        \[ F = \frac{CM_{\text{entre}}}{CM_{\text{dentro}}} \]
+                    </div>
+                    <p class="text-xs text-indigo-800">
+                        \(gl = (4,\; 52,827)\) | Crítico \(F_{0.95} = 2.3721\).<br>
+                        Levene: \(719.2765\) (\(p \approx 0\)).
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">ANOVA Clásico \(F\)</span>
+                        <span class="text-2xl font-bold text-indigo-600">14,257.78</span>
+                        <span class="text-xs text-slate-400">\(p \approx 0\)</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Eta Cuadrada (\(\eta^2\))</span>
+                        <span class="text-2xl font-bold text-emerald-600">51.91%</span>
+                        <span class="text-xs text-slate-400">(\(\eta^2 = 0.5191\))</span>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <span class="text-sm font-medium text-slate-500 mb-1">Kruskal-Wallis \(H\)</span>
+                        <span class="text-2xl font-bold text-slate-800">22,816.23</span>
+                        <span class="text-xs text-slate-400">Respaldo no paramétrico</span>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-indigo-200 shadow-sm flex flex-col justify-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+                        <span class="text-sm font-medium text-indigo-100 mb-1">Decisión Final</span>
+                        <span class="text-xl font-bold">Rechazar \(H_0\)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque de Pruebas de Validación y Respaldo del ANOVA -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Levene -->
+                <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 mb-2">1. Validación de Homocedasticidad: Prueba de Levene</h4>
+                        <p class="text-xs text-amber-900/90 mb-2">
+                            <strong>¿Por qué se usa?</strong> El ANOVA clásico asume varianzas iguales entre los \(k\) grupos. Levene verifica este supuesto de forma robusta incluso cuando las distribuciones no son perfectamente normales.
+                        </p>
+                        <p class="text-xs text-amber-900/90 mb-3">
+                            <strong>¿Para qué sirve?</strong> Determina si hay heterocedasticidad (\(W = 719.2765,\; p \approx 0\)), señalando la necesidad de respaldar el ANOVA con una prueba no paramétrica.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-xl p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ W = \frac{(N-k)}{(k-1)} \frac{\sum_{i=1}^{k} N_i (\bar{Z}_{i\cdot} - \bar{Z}_{\cdot\cdot})^2}{\sum_{i=1}^{k}\sum_{j=1}^{N_i}(Z_{ij} - \bar{Z}_{i\cdot})^2}, \quad Z_{ij} = |Y_{ij} - \tilde{Y}_i| \]
+                    </div>
+                </div>
+
+                <!-- Kruskal-Wallis -->
+                <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 mb-2">2. Respaldo No Paramétrico: Kruskal-Wallis (\(H\))</h4>
+                        <p class="text-xs text-amber-900/90 mb-2">
+                            <strong>¿Por qué se usa?</strong> Al rechazarse la homocedasticidad en Levene y la normalidad estricta, se requiere un contraste libre de supuestos distribucionales.
+                        </p>
+                        <p class="text-xs text-amber-900/90 mb-3">
+                            <strong>¿Para qué sirve?</strong> Compara los rangos (medianas) entre las 5 especies (\(H = 22,816.2321,\; p \approx 0\)), confirmando que la conclusión del ANOVA es sólida e independiente de los supuestos paramétricos.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-xl p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ H = \frac{12}{N(N+1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(N+1) \]
+                    </div>
+                </div>
+
+                <!-- Eta Cuadrada -->
+                <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 mb-2">3. Tamaño del Efecto: Eta Cuadrada (\(\eta^2\))</h4>
+                        <p class="text-xs text-amber-900/90 mb-2">
+                            <strong>¿Por qué se usa?</strong> El estadístico \(F\) indica si existen diferencias, pero no qué tan fuerte es el impacto de la variable categórica (especie).
+                        </p>
+                        <p class="text-xs text-amber-900/90 mb-3">
+                            <strong>¿Para qué sirve?</strong> Mide la proporción de varianza total explicada por la especie. Un \(\eta^2 = 0.5191\) indica que el <strong>51.91%</strong> de la variación del peso se explica únicamente por la especie (efecto grande).
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-xl p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ \eta^2 = \frac{SC_{\text{entre}}}{SC_{\text{total}}} = 0.5191 \]
+                    </div>
+                </div>
+
+                <!-- Tukey HSD -->
+                <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 mb-2">4. Prueba Post-Hoc: Tukey HSD</h4>
+                        <p class="text-xs text-amber-900/90 mb-2">
+                            <strong>¿Por qué se usa?</strong> El ANOVA solo indica que <em>al menos una</em> especie difiere, pero no cuáles. Hacer múltiples pruebas t inflaría el Error Tipo I.
+                        </p>
+                        <p class="text-xs text-amber-900/90 mb-3">
+                            <strong>¿Para qué sirve?</strong> Compara todos los pares posibles de especies controlando el nivel de significancia global. Todos los pares arrojan \(p = 5.13 \times 10^{-11}\), confirmando diferencias entre cada pareja.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-xl p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ q = \frac{|\bar{x}_i - \bar{x}_j|}{\sqrt{\frac{CM_{\text{dentro}}}{2}\left(\frac{1}{n_i} + \frac{1}{n_j}\right)}} \]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica ANOVA y Tukey -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm mb-6">
+                <h4 class="font-semibold text-slate-800 mb-4 text-center">Gráficas: Distribución de Log10(Peso) por Especie y Mapa de Calor Tukey HSD</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_05_anova_tukey.png')">
+                    <img src="grafica_05_anova_tukey.png" alt="Gráfica ANOVA y Tukey HSD" class="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/1200x400?text=grafica_05_anova_tukey.png'">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ampliar Gráfica 🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-5 bg-indigo-50 rounded-xl border border-indigo-100 text-sm text-indigo-900">
+                <h4 class="font-bold mb-2">Interpretación Global del ANOVA</h4>
+                Tanto el ANOVA (\(F = 14,257.7773\)) como su respaldo no paramétrico Kruskal-Wallis (\(H = 22,816.2321\)) confirman diferencias altamente significativas entre las 5 especies. La especie explica el <strong>51.91% de la varianza total</strong> (\(\eta^2 = 0.5191\)) y Tukey HSD confirma que <strong>cada especie difiere significativamente de todas las demás</strong>.
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: MODELOS PREDICTIVOS -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">7</span>
+                Modelos Predictivos de Peso y Tamaño por Especie (Ley Alométrica)
+            </h2>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mb-6">
+                <p class="text-sm text-slate-700 mb-4">
+                    La morfometría íctica obedece la ley alométrica \(W = a \cdot L^b\). Linealizando mediante \(\log_{10}\) e incluyendo <strong>términos de interacción</strong> con la especie (<code>fishcode</code>), cada especie ajusta su propia pendiente e intercepto (validación con división 80% entrenamiento / 20% prueba):
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Modelo A -->
+                    <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                        <h4 class="font-bold text-blue-900 mb-1">Modelo A: Predicción de Peso</h4>
+                        <p class="text-xs text-blue-800 mb-4">\(\log_{10}(\text{weight}) \sim \log_{10}(\text{length}) \times \text{fishcode}\)</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded-lg border border-blue-100">
+                                <span class="text-xs text-slate-500 block">\(R^2\) Escala Log</span>
+                                <span class="text-lg font-bold text-blue-600">0.9869</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-blue-100">
+                                <span class="text-xs text-slate-500 block">\(R^2\) Escala Real</span>
+                                <span class="text-lg font-bold text-blue-600">0.9435</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-blue-100">
+                                <span class="text-xs text-slate-500 block">MAE (Real)</span>
+                                <span class="text-lg font-bold text-slate-800">56.59 g</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-blue-100">
+                                <span class="text-xs text-slate-500 block">RMSE (Real)</span>
+                                <span class="text-lg font-bold text-slate-800">254.19 g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modelo B -->
+                    <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
+                        <h4 class="font-bold text-emerald-900 mb-1">Modelo B: Predicción de Tamaño</h4>
+                        <p class="text-xs text-emerald-800 mb-4">\(\log_{10}(\text{length}) \sim \log_{10}(\text{weight}) \times \text{fishcode}\)</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+                                <span class="text-xs text-slate-500 block">\(R^2\) Escala Log</span>
+                                <span class="text-lg font-bold text-emerald-600">0.9892</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+                                <span class="text-xs text-slate-500 block">\(R^2\) Escala Real</span>
+                                <span class="text-lg font-bold text-emerald-600">0.9916</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+                                <span class="text-xs text-slate-500 block">MAE (Real)</span>
+                                <span class="text-lg font-bold text-slate-800">8.04 mm</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+                                <span class="text-xs text-slate-500 block">RMSE (Real)</span>
+                                <span class="text-lg font-bold text-slate-800">15.85 mm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validación de Modelos: R2, MAE, RMSE -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 text-sm mb-1">Coeficiente \(R^2\)</h4>
+                        <p class="text-xs text-amber-900/90 mb-2"><strong>Para qué sirve:</strong> Mide qué proporción de la varianza real logra explicar el modelo (cercano a 1 indica ajuste excelente).</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} \]
+                    </div>
+                </div>
+                <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 text-sm mb-1">Error Absoluto Medio (MAE)</h4>
+                        <p class="text-xs text-amber-900/90 mb-2"><strong>Para qué sirve:</strong> Indica el error promedio en unidades reales (gramos o milímetros) sin sobredimensionar valores atípicos.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| \]
+                    </div>
+                </div>
+                <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-amber-900 text-sm mb-1">Raíz del Error Cuadrático (RMSE)</h4>
+                        <p class="text-xs text-amber-900/90 mb-2"><strong>Para qué sirve:</strong> Penaliza con mayor fuerza los errores grandes en especímenes pesados, evaluando la estabilidad en los extremos.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-2 border border-amber-200 text-center math-block text-xs">
+                        \[ \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} \]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica Modelos -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm mb-6">
+                <h4 class="font-semibold text-slate-800 mb-4 text-center">Gráficas: Valores Reales vs. Predichos (Modelo A y Modelo B)</h4>
+                <div class="cursor-pointer group relative rounded-lg overflow-hidden border border-slate-200 w-full" onclick="openModal('grafica_06_modelos_predictivos.png')">
+                    <img src="grafica_06_modelos_predictivos.png" alt="Gráfica Modelos Predictivos" class="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/1200x450?text=grafica_06_modelos_predictivos.png'">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-sm font-bold px-4 py-2 bg-black/60 rounded-full">Ampliar Gráfica 🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Predicciones de Ejemplo -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm overflow-x-auto">
+                <h4 class="font-semibold text-slate-800 mb-4">Ejemplos de Predicción por Especie (200 mm \(\rightarrow\) Peso | 150 g \(\rightarrow\) Tamaño)</h4>
+                <table class="min-w-full text-sm text-left text-slate-700">
+                    <thead class="text-xs uppercase bg-slate-100 text-slate-600">
+                        <tr>
+                            <th class="px-4 py-3 rounded-l-lg">Especie</th>
+                            <th class="px-4 py-3 text-right">Peso Estimado para 200 mm</th>
+                            <th class="px-4 py-3 text-right rounded-r-lg">Tamaño Estimado para 150 g</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">BLGL</td><td class="px-4 py-2 text-right font-medium text-blue-700">174.57 g</td><td class="px-4 py-2 text-right font-medium text-emerald-700">184.41 mm</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">LMBS</td><td class="px-4 py-2 text-right font-medium text-blue-700">114.83 g</td><td class="px-4 py-2 text-right font-medium text-emerald-700">217.06 mm</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">CNCF</td><td class="px-4 py-2 text-right font-medium text-blue-700">60.53 g</td><td class="px-4 py-2 text-right font-medium text-emerald-700">267.44 mm</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">GZSD</td><td class="px-4 py-2 text-right font-medium text-blue-700">73.01 g</td><td class="px-4 py-2 text-right font-medium text-emerald-700">250.58 mm</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="px-4 py-2 font-bold">CARP</td><td class="px-4 py-2 text-right font-medium text-blue-700">123.63 g</td><td class="px-4 py-2 text-right font-medium text-emerald-700">220.66 mm</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8: CONCLUSIONES -->
+        <section class="mb-12 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <span class="bg-slate-800 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">8</span>
+                Conclusiones Generales
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-700">
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">1. Muestra y Normalidad</h4>
+                    La magnitud de <code>df_limpio.csv</code> garantiza potencia estadística sobrada en todas las especies (\(n_i \ge 30\)). La transformación \(\log_{10}\) reduce drásticamente la asimetría positiva original, habilitando el análisis paramétrico respaldado por el Teorema del Límite Central.
+                </div>
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">2. Distribución de Especies (\(\chi^2\))</h4>
+                    La prueba de bondad de ajuste evidencia que las capturas no se reparten de manera uniforme entre las 5 especies principales, confirmando dominancia poblacional en el muestreo del río.
+                </div>
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">3. Varianzas y Medias (F, Welch y ANOVA)</h4>
+                    La prueba F valida que la dispersión del peso difiere entre las especies principales, justificando la prueba <strong>t de Welch</strong>. Tanto Welch como ANOVA (con Levene, Kruskal-Wallis y Tukey HSD) confirman diferencias significativas cuantificadas por \(d\) de Cohen y \(\eta^2\).
+                </div>
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">4. Capacidad Predictiva</h4>
+                    Incorporar la interacción entre especie y longitud/peso en escala logarítmica captura la alometría específica de cada especie, logrando ajustes sobresalientes (\(R^2 > 0.94\) en peso y \(R^2 > 0.99\) en tamaño).
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-slate-200 text-center pb-8">
+            <p class="text-slate-500 text-sm">
+                Trabajo realizado por <strong>Josué Arturo Rosas González - Christian Omar Herrera Valdez - Aldair Natanael Limon Galán</strong> - Portafolio de Estadística 2026. Todos los derechos reservados.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal para las imágenes -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white hover:text-slate-300 p-2 focus:outline-none" aria-label="Cerrar modal">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="modalImage" src="" alt="Vista ampliada" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl object-contain bg-white p-2">
+    </div>
+
+    <script>
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
